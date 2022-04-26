@@ -1,10 +1,37 @@
-﻿@page
+﻿@page "{colorId?}"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+
+    var colorClass = Model.SelectedColor.Id switch
+    {
+        "red" => "color--red",
+        "yellow" => "color--yellow",
+        "blue" => "color--blue",
+        _ => "color--red"
+    };
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="settings">
+    <span class="settings__title">Settings</span>
+    <form method="get">
+        <div class="setting">
+            <div class="setting__title">Color</div>
+            <div class="setting__options">
+                @foreach (var color in Model.Colors)
+                {
+                    <label style="margin-right: 8px;">
+                        <input asp-for="ColorId" type="radio" value="@color.Id" />
+                        <span>@color.Name</span>
+                    </label>
+                }
+            </div>
+        </div>
+        <input type="submit" value="Go!" style="margin-top: 4px;" />
+    </form>
+</div>
+
+<div class="result">
+    <div class="result__title">Result</div>
+    <span class="result__text @colorClass">Styled text.</span>
 </div>
