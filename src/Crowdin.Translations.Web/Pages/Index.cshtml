@@ -1,4 +1,4 @@
-﻿@page "{colorId?}"
+﻿@page "{colorId?}/{culture?}"
 @model IndexModel
 @inject IStringLocalizer<SharedResource> localizer
 @{
@@ -17,6 +17,18 @@
     <span class="settings__title">@localizer["Settings.Title"]</span>
     <form method="get">
         <div class="setting">
+            <div class="setting__title">@localizer["Culture.Title"]</div>
+            <div class="setting__options">
+                @foreach (var culture in Model.SupportedCultures)
+                {
+                    <label style="margin-right: 8px;">
+                        <input asp-for="Culture" type="radio" value="@culture.Name" />
+                        <span>@culture.NativeName</span>
+                    </label>
+                }
+            </div>
+        </div>
+        <div class="setting" style="margin-top: 8px;">
             <div class="setting__title">@localizer["Color.Title"]</div>
             <div class="setting__options">
                 @foreach (var color in Model.Colors)

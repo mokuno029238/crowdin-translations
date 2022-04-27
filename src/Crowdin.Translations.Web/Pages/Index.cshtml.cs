@@ -1,4 +1,6 @@
-﻿using Crowdin.Translations.Web.Datas;
+﻿using System.Globalization;
+using Crowdin.Translations.Web.Datas;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -18,15 +20,28 @@ namespace Crowdin.Translations.Web.Pages
                 new ColorData { Id = "yellow", Name = "Yellow" },
                 new ColorData { Id = "blue", Name = "Blue" }
             };
+            SupportedCultures = new List<CultureInfo>
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("zh-TW"),
+                new CultureInfo("ja-JP"),
+            };
             _defaultColorId = Colors.First().Id;
         }
 
         public IList<ColorData> Colors { get; set; }
 
+        public IList<CultureInfo> SupportedCultures { get; set; }
+
         [BindProperty(SupportsGet = true)]
         public string ColorId { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string Culture { get; set; }
+
         public ColorData SelectedColor { get; set; }
+
+        public string SelectedCulture { get; set; }
 
         public void OnGet()
         {
@@ -35,6 +50,16 @@ namespace Crowdin.Translations.Web.Pages
             color ??= Colors.First();
             ColorId = color.Id;
             SelectedColor = color;
+
+            var culture = string.IsNullOrEmpty(Culture) ? Thread.CurrentThread.CurrentUICulture.Name : Culture;
+            Culture = culture;
+            SelectedCulture = culture;
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(1) }
+            );
         }
     }
 }

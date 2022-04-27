@@ -1,16 +1,19 @@
 ﻿.settings, .result {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 .settings__title, .result__title {
   font-size: 24px;
+  font-weight: 600;
 }
 
 .setting {
+  margin-top: 8px;
 }
 
 .setting__title {
   font-size: 20px;
+  font-weight: 600;
 }
 
 .setting__options {

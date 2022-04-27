@@ -138,4 +138,7 @@
   <data name="Result.StyledText" xml:space="preserve">
     <value>単語</value>
   </data>
+  <data name="Culture.Title" xml:space="preserve">
+    <value>言語</value>
+  </data>
 </root>
