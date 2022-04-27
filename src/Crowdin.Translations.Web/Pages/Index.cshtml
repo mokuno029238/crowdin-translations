@@ -1,5 +1,6 @@
 ﻿@page "{colorId?}"
 @model IndexModel
+@inject IStringLocalizer<SharedResource> localizer
 @{
     ViewData["Title"] = "Home page";
 
@@ -13,16 +14,16 @@
 }
 
 <div class="settings">
-    <span class="settings__title">Settings</span>
+    <span class="settings__title">@localizer["Settings.Title"]</span>
     <form method="get">
         <div class="setting">
-            <div class="setting__title">Color</div>
+            <div class="setting__title">@localizer["Color.Title"]</div>
             <div class="setting__options">
                 @foreach (var color in Model.Colors)
                 {
                     <label style="margin-right: 8px;">
                         <input asp-for="ColorId" type="radio" value="@color.Id" />
-                        <span>@color.Name</span>
+                        <span>@localizer[$"Color.{color.Name}"]</span>
                     </label>
                 }
             </div>
@@ -32,6 +33,6 @@
 </div>
 
 <div class="result">
-    <div class="result__title">Result</div>
-    <span class="result__text @colorClass">Styled text.</span>
+    <div class="result__title">@localizer["Result.Title"]</div>
+    <span class="result__text @colorClass">@localizer["Result.StyledText"]</span>
 </div>

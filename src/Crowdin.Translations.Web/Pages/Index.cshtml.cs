@@ -6,13 +6,12 @@ namespace Crowdin.Translations.Web.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly string _defaultColorId;
         private readonly ILogger<IndexModel> _logger;
+        private readonly string _defaultColorId;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-
             Colors = new List<ColorData>
             {
                 new ColorData { Id = "red", Name = "Red" },
