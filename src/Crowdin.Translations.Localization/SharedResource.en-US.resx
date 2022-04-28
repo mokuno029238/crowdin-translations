@@ -141,4 +141,7 @@
   <data name="Culture.Title" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Color.Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
 </root>
