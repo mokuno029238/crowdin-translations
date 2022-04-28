@@ -25,6 +25,7 @@ namespace Crowdin.Translations.Web.Pages
                 new CultureInfo("en-US"),
                 new CultureInfo("zh-TW"),
                 new CultureInfo("ja-JP"),
+                new CultureInfo("aa-ER"),
             };
             _defaultColorId = Colors.First().Id;
         }

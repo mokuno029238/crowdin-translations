@@ -7,7 +7,8 @@ var supportedCultures = new List<CultureInfo>
 {
     new CultureInfo("en-US"),
     new CultureInfo("zh-TW"),
-    new CultureInfo("ja-JP")
+    new CultureInfo("ja-JP"),
+    new CultureInfo("aa-ER"),
 };
 
 // Add services to the container.

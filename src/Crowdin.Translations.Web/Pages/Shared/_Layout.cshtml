@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Crowdin.Translations.Web.styles.css" asp-append-version="true" />
+
+    @if (ViewBag.IsCrowdinInContextEnabled is bool isCrowdinInContextEnabled && isCrowdinInContextEnabled)
+    {
+        <script type="text/javascript">
+            var _jipt = [];
+            _jipt.push(['project', 'vital-crm-kevin-testing']);
+        </script>
+        <script type="text/javascript" src="//cdn.crowdin.com/jipt/jipt.js"></script>
+    }
 </head>
 <body>
     <header>

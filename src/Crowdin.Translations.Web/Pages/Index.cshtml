@@ -3,6 +3,7 @@
 @inject IStringLocalizer<SharedResource> localizer
 @{
     ViewData["Title"] = "Home page";
+    ViewBag.IsCrowdinInContextEnabled = Model.SelectedCulture == "aa-ER";
 
     var colorClass = Model.SelectedColor.Id switch
     {
@@ -23,7 +24,7 @@
                 {
                     <label style="margin-right: 8px;">
                         <input asp-for="Culture" type="radio" value="@culture.Name" />
-                        <span>@culture.NativeName</span>
+                        <span>@(culture.Name == "aa-ER" ? "Crowdin In-Context Translation" : culture.NativeName)</span>
                     </label>
                 }
             </div>
