@@ -3,5 +3,5 @@ base_path: /
 base_url: 'https://api.crowdin.com'
 preserve_hierarchy: true
 files:
-  - source: /src/Crowdin.Translations.Localization/*.en-US.resx
-    translation: /src/Crowdin.Translations.Localization/%file_name%_crowdin.%locale%.%file_extension%
+  - source: /src/Crowdin.Translations.Localization/SharedResource.resx
+    translation: /src/Crowdin.Translations.Localization/%file_name%.%locale%.%file_extension%
